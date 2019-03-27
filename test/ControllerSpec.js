@@ -189,6 +189,14 @@ describe('controller', function () {
 
 		it('should update the view', function () {
 			// TODO: write test
+			var todo = {id: 20, title: 'my todo', completed: false};
+			setUpModel([todo]);
+
+			subject.setView('');
+			var parameter = { completed: true};
+			view.trigger('toggleAll', parameter);
+
+			expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 20, completed: parameter.completed});
 		});
 	});
 
